@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-function Textform({ heading }) {
+function Textform({ heading,mode }) {
 
     const handleUpClick = () => {
         const newText = text.toUpperCase();
@@ -28,15 +28,15 @@ function Textform({ heading }) {
     return (
         <>
             <div>
-                <div className="mb-3 my-3">
-                    <h3><label htmlFor="exampleFormControlTextarea1" className="form-label">{heading}</label></h3>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onChange={handleOnChange} rows="12"></textarea>
-                    <button className="btn btn-primary mt-3" onClick={handleUpClick}>Convert To UpperCase</button>
-                    <button className="btn btn-primary mt-3 mx-2" onClick={handleLoClick}>Convert To LowerCase</button>
-                    <button className="btn btn-primary mt-3 mx-2" onClick={handleClearClick}>Clear text</button>
+                <div className={`mb-3 my-3 text-${mode==='light'?'dark':'light'}`}>
+                    <h3 className={`text-${mode==='light'?'dark':'light'}`}><label htmlFor="exampleFormControlTextarea1" className="form-label">{heading}</label></h3>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" style={{backgroundColor:mode==='light'?'white':'rgb(34 48 52)',color:mode==='light'?'black':'white'}} value={text} onChange={handleOnChange} rows="12"></textarea>
+                    <button className={`btn btn-${mode==='light'?'primary':'secondary'} mt-3`} onClick={handleUpClick}>Convert To UpperCase</button>
+                    <button className={`btn btn-${mode==='light'?'primary':'secondary'} mt-3 mx-2`} onClick={handleLoClick}>Convert To LowerCase</button>
+                    <button className={`btn btn-${mode==='light'?'primary':'secondary'} mt-3 mx-2`} onClick={handleClearClick}>Clear text</button>
                 </div>
             </div>
-            <div className="container">
+            <div className={`container text-${mode==='light'?'dark':'light'}`} >
                 <h3>Text analaysis</h3>
                 <div className="border rounded-end">
                     <p className='mx-1'>Total number characters {text.length} ansd total number of words  {text.split(" ").length}</p>
@@ -44,7 +44,7 @@ function Textform({ heading }) {
                 </div>
 
             </div>
-            <div className="container my-3">
+            <div className={`container text-${mode==='light'?'dark':'light'} my-3`}>
                 <h3>Text Preview</h3>
                 <div className="border">
                     <p className='mx-1'>
