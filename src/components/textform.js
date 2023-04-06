@@ -13,9 +13,16 @@ function Textform({ heading }) {
 
         setText(newText);
     }
+    const handleClearClick = () => {
+        const newText ='';
+        // console.log(newText);
+
+        setText(newText);
+    }
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
+    
 
     const [text, setText] = useState('')
     return (
@@ -26,6 +33,7 @@ function Textform({ heading }) {
                     <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onChange={handleOnChange} rows="12"></textarea>
                     <button className="btn btn-primary mt-3" onClick={handleUpClick}>Convert To UpperCase</button>
                     <button className="btn btn-primary mt-3 mx-2" onClick={handleLoClick}>Convert To LowerCase</button>
+                    <button className="btn btn-primary mt-3 mx-2" onClick={handleClearClick}>Clear text</button>
                 </div>
             </div>
             <div className="container">
