@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 function Textform({ heading,mode }) {
+    const [text, setText] = useState('');
+    function wordLength(){
+        if(text.length===0) return 0;
+        else if(text.charAt(text.length-1)===' ')return text.split(" ").length-1;
+        else return text.split(" ").length;
 
+    }
     const handleUpClick = () => {
         const newText = text.toUpperCase();
         // console.log(newText);
@@ -24,7 +30,7 @@ function Textform({ heading,mode }) {
     }
     
 
-    const [text, setText] = useState('')
+
     return (
         <>
             <div>
@@ -39,7 +45,8 @@ function Textform({ heading,mode }) {
             <div className={`container text-${mode==='light'?'dark':'light'}`} >
                 <h3>Text analaysis</h3>
                 <div className="border rounded-end">
-                    <p className='mx-1'>Total number characters {text.length} ansd total number of words  {text.split(" ").length}</p>
+                {/* (text.length===0)?0:( (text.charAt(text.length-1)===' ') ? text.split(" ").length-1 : (text.split(" ").length))   */}
+                    <p className='mx-1'>Total number characters {text.length} ansd total number of words  {wordLength()}</p>
                     <p className='mx-1'>Expected time to read the text {0.008 * text.split(" ").length *60} seconds</p>
                 </div>
 
