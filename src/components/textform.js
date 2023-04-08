@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 function Textform({ heading,mode }) {
     const [text, setText] = useState('');
     function wordLength(){
-      return text.split(" ").filter((element)=>{return element.length!==0}).length;
+      return text.split(/\s+/).filter((element)=>{return element.length!==0}).length;
     }
     const handleUpClick = () => {
         const newText = text.toUpperCase();
